@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.3.32819.101
+# Visual Studio Version 18
+VisualStudioVersion = 18.10.12120.281 insiders
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "frmCalculator", "WinFormsApp2\frmCalculator.csproj", "{FB3B6F4C-2B54-4F82-804A-780E9D388E05}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "WinFormsApp2\Calculator.csproj", "{FB3B6F4C-2B54-4F82-804A-780E9D388E05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "frmNotebook", "frmNotebook\frmNotebook.csproj", "{6FB607B8-25ED-46C0-B97E-C21E97FE0271}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notebook", "frmNotebook\Notebook.csproj", "{6FB607B8-25ED-46C0-B97E-C21E97FE0271}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "frmPaint", "frmPaint\frmPaint.csproj", "{D0101D38-77FA-41D0-92BE-BE77E4F369D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paint", "frmPaint\Paint.csproj", "{D0101D38-77FA-41D0-92BE-BE77E4F369D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
