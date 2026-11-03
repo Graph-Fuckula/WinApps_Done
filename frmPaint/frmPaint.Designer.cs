@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPaint));
             menuStrip1 = new MenuStrip();
             файлToolStripMenuItem = new ToolStripMenuItem();
             создатьToolStripMenuItem = new ToolStripMenuItem();
@@ -132,101 +133,104 @@
             toolStrip1.Location = new Point(0, 24);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Padding = new Padding(0, 5, 1, 5);
-            toolStrip1.Size = new Size(800, 33);
+            toolStrip1.Size = new Size(800, 49);
             toolStrip1.TabIndex = 2;
             toolStrip1.Text = "toolStrip1";
             // 
             // toolStripSeparator8
             // 
             toolStripSeparator8.Name = "toolStripSeparator8";
-            toolStripSeparator8.Size = new Size(6, 23);
+            toolStripSeparator8.Size = new Size(6, 39);
             // 
             // toolStripButton7
             // 
             toolStripButton7.ImageTransparentColor = Color.Magenta;
             toolStripButton7.Name = "toolStripButton7";
-            toolStripButton7.Size = new Size(59, 20);
+            toolStripButton7.Size = new Size(59, 36);
             toolStripButton7.Text = "Вставить";
             toolStripButton7.TextImageRelation = TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator7
             // 
             toolStripSeparator7.Name = "toolStripSeparator7";
-            toolStripSeparator7.Size = new Size(6, 23);
+            toolStripSeparator7.Size = new Size(6, 39);
             // 
             // toolStripButton1
             // 
             toolStripButton1.ForeColor = SystemColors.ControlText;
             toolStripButton1.ImageTransparentColor = Color.Magenta;
             toolStripButton1.Name = "toolStripButton1";
-            toolStripButton1.Size = new Size(67, 20);
+            toolStripButton1.Size = new Size(67, 36);
             toolStripButton1.Text = "Карандаш";
+            toolStripButton1.Click += toolStripButton1_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(6, 23);
+            toolStripSeparator1.Size = new Size(6, 39);
             // 
             // toolStripButton2
             // 
+            toolStripButton2.Image = (Image)resources.GetObject("toolStripButton2.Image");
             toolStripButton2.ImageTransparentColor = Color.Magenta;
             toolStripButton2.Name = "toolStripButton2";
-            toolStripButton2.Size = new Size(56, 20);
+            toolStripButton2.Size = new Size(88, 36);
             toolStripButton2.Text = "Заливка";
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(6, 23);
+            toolStripSeparator2.Size = new Size(6, 39);
             // 
             // toolStripButton3
             // 
             toolStripButton3.ImageTransparentColor = Color.Magenta;
             toolStripButton3.Name = "toolStripButton3";
-            toolStripButton3.Size = new Size(49, 20);
+            toolStripButton3.Size = new Size(49, 36);
             toolStripButton3.Text = "Ластик";
+            toolStripButton3.Click += toolStripButton3_Click;
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(6, 23);
+            toolStripSeparator3.Size = new Size(6, 39);
             // 
             // toolStripButton4
             // 
             toolStripButton4.ImageTransparentColor = Color.Magenta;
             toolStripButton4.Name = "toolStripButton4";
-            toolStripButton4.Size = new Size(41, 20);
+            toolStripButton4.Size = new Size(41, 36);
             toolStripButton4.Text = "Текст";
             // 
             // toolStripSeparator4
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(6, 23);
+            toolStripSeparator4.Size = new Size(6, 39);
             // 
             // toolStripButton5
             // 
             toolStripButton5.ImageTransparentColor = Color.Magenta;
             toolStripButton5.Name = "toolStripButton5";
-            toolStripButton5.Size = new Size(54, 20);
+            toolStripButton5.Size = new Size(54, 36);
             toolStripButton5.Text = "Фигуры";
             // 
             // toolStripSeparator5
             // 
             toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(6, 23);
+            toolStripSeparator5.Size = new Size(6, 39);
             // 
             // toolStripButton6
             // 
             toolStripButton6.ImageTransparentColor = Color.Magenta;
             toolStripButton6.Name = "toolStripButton6";
-            toolStripButton6.Size = new Size(81, 20);
+            toolStripButton6.Size = new Size(81, 36);
             toolStripButton6.Text = "Выбор цвета";
             toolStripButton6.Click += toolStripButton6_Click;
             // 
             // toolStripSeparator6
             // 
             toolStripSeparator6.Name = "toolStripSeparator6";
-            toolStripSeparator6.Size = new Size(6, 23);
+            toolStripSeparator6.Size = new Size(6, 39);
             // 
             // panel1
             // 
@@ -234,9 +238,9 @@
             panel1.Controls.Add(vScrollBar1);
             panel1.Controls.Add(hScrollBar1);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 57);
+            panel1.Location = new Point(0, 73);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 371);
+            panel1.Size = new Size(800, 355);
             panel1.TabIndex = 3;
             // 
             // pictureBox1
@@ -246,6 +250,10 @@
             pictureBox1.Size = new Size(782, 340);
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
+            pictureBox1.Paint += pictureBox1_Paint;
+            pictureBox1.MouseDown += pictureBox1_MouseDown;
+            pictureBox1.MouseMove += pictureBox1_MouseMove;
+            pictureBox1.MouseUp += pictureBox1_MouseUp;
             // 
             // vScrollBar1
             // 
