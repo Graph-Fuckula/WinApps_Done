@@ -72,6 +72,7 @@
                 if (currentTool == "Eraser")
                 {
                     currentColor = pictureBox1.BackColor;
+                    brushsize = 20f;
                 }
                 else
                 {
@@ -124,6 +125,20 @@
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             currentTool = "Eraser";
+        }
+
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("Нарисуйте что-нибудь!");
+                return;
+            }
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.Image.Save(saveFileDialog1.FileName);
+            }
         }
     }
 }

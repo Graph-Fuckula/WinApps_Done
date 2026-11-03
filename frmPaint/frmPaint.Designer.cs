@@ -59,6 +59,7 @@
             pictureBox1 = new PictureBox();
             vScrollBar1 = new VScrollBar();
             hScrollBar1 = new HScrollBar();
+            saveFileDialog1 = new SaveFileDialog();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             panel1.SuspendLayout();
@@ -84,25 +85,27 @@
             // создатьToolStripMenuItem
             // 
             создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
-            создатьToolStripMenuItem.Size = new Size(132, 22);
+            создатьToolStripMenuItem.Size = new Size(180, 22);
             создатьToolStripMenuItem.Text = "Создать";
             // 
             // открытьToolStripMenuItem
             // 
             открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            открытьToolStripMenuItem.Size = new Size(132, 22);
+            открытьToolStripMenuItem.Size = new Size(180, 22);
             открытьToolStripMenuItem.Text = "Открыть";
             // 
             // сохранитьToolStripMenuItem
             // 
+            сохранитьToolStripMenuItem.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            сохранитьToolStripMenuItem.Size = new Size(132, 22);
+            сохранитьToolStripMenuItem.Size = new Size(180, 22);
             сохранитьToolStripMenuItem.Text = "Сохранить";
+            сохранитьToolStripMenuItem.Click += сохранитьToolStripMenuItem_Click;
             // 
             // видToolStripMenuItem1
             // 
             видToolStripMenuItem1.Name = "видToolStripMenuItem1";
-            видToolStripMenuItem1.Size = new Size(132, 22);
+            видToolStripMenuItem1.Size = new Size(180, 22);
             видToolStripMenuItem1.Text = "Выход";
             видToolStripMenuItem1.Click += видToolStripMenuItem1_Click;
             // 
@@ -325,5 +328,6 @@
         private ToolStripSeparator toolStripSeparator7;
         private ToolStripSeparator toolStripSeparator6;
         private PictureBox pictureBox1;
+        private SaveFileDialog saveFileDialog1;
     }
 }
