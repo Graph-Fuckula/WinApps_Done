@@ -1,12 +1,19 @@
-﻿namespace WinAppPaint1
+﻿using System.Net;
+
+namespace WinAppPaint1
 {
     public partial class frmPaint : Form
     {
         private bool isDrawing = false;
+        private Bitmap bmp;
         private Point previousPoint;
+        private Point StartPoint;
+        private Point EndPoint;
         private Color currentColor = Color.Black;
         private float brushsize = 4f;
         private string currentTool = "None";
+        public Pen pen = new Pen(Color.Black, 7f);
+        public Graphics g;
         private struct LineData
         {
             public Point Start;
@@ -24,6 +31,9 @@
             toolStripButton4.Image = global::Paint.Properties.Resources.иконка_текст;
             toolStripButton5.Image = global::Paint.Properties.Resources.фигуры;
             toolStripButton6.Image = global::Paint.Properties.Resources.палитра_иконка;
+            bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            g = Graphics.FromImage(bmp);
+            pictureBox1.Image = bmp;
         }
 
         private void toolStripComboBox1_Click(object sender, EventArgs e)
@@ -64,26 +74,69 @@
         {
             if (e.Button == MouseButtons.Left)
             {
-                if (currentTool == "Pen" || currentTool == "Eraser")
+                if (currentTool == "Pen" || currentTool == "Eraser" || currentTool == "Square" || currentTool == "Circle" || currentTool == "Triangle")
                 {
                     isDrawing = true;
                     previousPoint = e.Location;
+                    StartPoint = e.Location;
                 }
                 if (currentTool == "Eraser")
                 {
-                    currentColor = pictureBox1.BackColor;
-                    brushsize = 20f;
+                    currentColor = Color.White;
+                    brushsize = 16f;
                 }
                 else
                 {
                     currentColor = Color.Black;
+                    brushsize = 4f;
                 }
             }
         }
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+
+            if (e.Button == MouseButtons.Left && isDrawing)
+            {
+                if (currentTool == "Square")
+                {
+                    EndPoint = e.Location;
+                    int x = Math.Min(StartPoint.X, EndPoint.X);
+                    int y = Math.Min(StartPoint.Y, EndPoint.Y);
+                    int width = Math.Abs(StartPoint.X - EndPoint.X);
+                    int height = Math.Abs(StartPoint.Y - EndPoint.Y);
+                    g.DrawRectangle(pen, x, y, width, height);
+                    pictureBox1.Invalidate();
+                }
+                else if (currentTool == "Triangle")
+                {
+                    EndPoint = e.Location;
+                    int x = Math.Min(StartPoint.X, EndPoint.X);
+                    int y = Math.Min(StartPoint.Y, EndPoint.Y);
+                    int width = Math.Abs(StartPoint.X - EndPoint.X);
+                    int height = Math.Abs(StartPoint.Y - EndPoint.Y);
+
+                    Point Top = new Point(x + width / 2, y);   
+                    Point Left = new Point(x, y + height);         
+                    Point Right = new Point(x + width, y + height);
+                    Point[] trianglePoints = { Top, Left, Right };
+                    g.DrawPolygon(pen, trianglePoints);
+                    pictureBox1.Invalidate(); 
+                }
+                else if (currentTool == "Circle")
+                {
+                    pictureBox1.Invalidate();
+
+                }
+                isDrawing = false;
+            }
+        }
+
+
+
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (isDrawing)
+            if (isDrawing && (currentTool == "Pen" || currentTool == "Eraser"))
             {
                 LineData newLine = new LineData
                 {
@@ -98,13 +151,6 @@
             }
         }
 
-        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                isDrawing = false;
-            }
-        }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
@@ -126,6 +172,10 @@
         {
             currentTool = "Eraser";
         }
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            currentTool = "Square";
+        }
 
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -139,6 +189,16 @@
             {
                 pictureBox1.Image.Save(saveFileDialog1.FileName);
             }
+        }
+
+        private void toolStripButton8_Click(object sender, EventArgs e)
+        {
+            currentTool = "Triangle";
+        }
+
+        private void toolStripButton9_Click(object sender, EventArgs e)
+        {
+            currentTool = "Circle";
         }
     }
 }
